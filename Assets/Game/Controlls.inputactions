@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "351f2ccd-1f9f-44bf-9bec-d62ac5c5f408",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -854,7 +854,7 @@
                 {
                     "name": "",
                     "id": "7cfb378c-2137-48e1-8009-2a0389c50e89",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

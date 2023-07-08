@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Game
@@ -6,8 +7,9 @@ namespace Game
     public class GameMaster : MonoBehaviour
     {
         public static int Difficulty = 1;
-
-        [SerializeField] private int _difficulty = 1;
+        public static InputActionAsset InputActionAsset;
+        public InputActionAsset inputActionAsset;
+        [SerializeField] private int difficulty = 1;
 
         public Slider difficultySlider;
         private bool _isDifficultySliderNotNull;
@@ -15,15 +17,16 @@ namespace Game
         // Start is called before the first frame update
         private void Start()
         {
-            _difficulty = Difficulty;
+            InputActionAsset = inputActionAsset;
+            difficulty = Difficulty;
             _isDifficultySliderNotNull = difficultySlider != null;
         }
 
         // Update is called once per frame
         private void Update()
         {
-            if (_isDifficultySliderNotNull) _difficulty = (int)difficultySlider.value;
-            Difficulty = _difficulty;
+            if (_isDifficultySliderNotNull) difficulty = (int)difficultySlider.value;
+            Difficulty = difficulty;
         }
     }
 }

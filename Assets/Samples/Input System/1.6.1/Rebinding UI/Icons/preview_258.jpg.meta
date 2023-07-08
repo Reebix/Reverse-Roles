@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -344,10 +344,10 @@ TextureImporter:
       name: preview_258_11
       rect:
         serializedVersion: 2
-        x: 456
-        y: 294
-        width: 114
-        height: 114
+        x: 474
+        y: 310
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +386,10 @@ TextureImporter:
       name: preview_258_13
       rect:
         serializedVersion: 2
-        x: 684
-        y: 294
-        width: 114
-        height: 114
+        x: 792
+        y: 310
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,6 +697,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: preview_258_28
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 309
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e34fa0c5d60692442b603caeeb49ea66
+      internalID: -1443730713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -729,6 +750,7 @@ TextureImporter:
       preview_258_25: 340097673
       preview_258_26: -334758321
       preview_258_27: 269190667
+      preview_258_28: -1443730713
       preview_258_3: 66675338
       preview_258_4: 1791344887
       preview_258_5: -530298131
