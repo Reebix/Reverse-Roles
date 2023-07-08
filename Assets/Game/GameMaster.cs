@@ -1,17 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameMaster : MonoBehaviour
+namespace Game
 {
-
-    // Start is called before the first frame update
-    private void Start() 
+    public class GameMaster : MonoBehaviour
     {
-        
-    }
+        public static int Difficulty = 1;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        [SerializeField] private int _difficulty = 1;
+
+        public Slider difficultySlider;
+        private bool _isDifficultySliderNotNull;
+
+        // Start is called before the first frame update
+        private void Start()
+        {
+            _difficulty = Difficulty;
+            _isDifficultySliderNotNull = difficultySlider != null;
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            if (_isDifficultySliderNotNull) _difficulty = (int)difficultySlider.value;
+            Difficulty = _difficulty;
+        }
     }
 }

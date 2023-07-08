@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-namespace Game
+namespace Game.MainMenu
 {
     public class MainMenuScript : MonoBehaviour
     {
@@ -65,7 +65,7 @@ namespace Game
         private IEnumerator GoToGameScene()
         {
             yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene("Game/MainScene");
+            SceneManager.LoadScene("Game/InGame/MainScene");
         }
     }
 }
