@@ -525,7 +525,7 @@ RectTransform:
   m_GameObject: {fileID: 1710135098582024288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1710135097630070115}
@@ -638,6 +638,8 @@ MonoBehaviour:
   quitButton: {fileID: 3838864584464419375}
   mainMenuButton: {fileID: 1984627175913014889}
   settingsButton: {fileID: 1984627176176994986}
+  infoPrefab: {fileID: 1862898631344600089, guid: c12c84a56ec41ad43a854be7ecf28731,
+    type: 3}
 --- !u!1 &1710135098990066744
 GameObject:
   m_ObjectHideFlags: 0

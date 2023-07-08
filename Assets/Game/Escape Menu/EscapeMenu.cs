@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Game;
 using SharpUI.Source.Common.UI.Elements.Button;
 using SharpUI.Source.Common.Util.Extensions;
@@ -14,6 +12,9 @@ public class EscapeMenu : MonoBehaviour
 {
     public InputActionReference escapeAction;
     public RectButton resumeButton, quitButton, mainMenuButton, settingsButton;
+    public GameObject infoPrefab;
+
+    private GameObject _lastSelectedGameObject;
 
     // Start is called before the first frame update
     private void Start()
@@ -25,9 +26,15 @@ public class EscapeMenu : MonoBehaviour
         settingsButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnSettingsButtonClicked);
     }
 
+    // Update is called once per frame
+    private void Update()
+    {
+        ToggleEscapeMenu();
+    }
+
     private void OnSettingsButtonClicked(Unit obj)
     {
-        throw new NotImplementedException();
+        infoPrefab.SetActive(true);
     }
 
     private void OnMainMenuButtonClicked(Unit obj)
@@ -36,7 +43,7 @@ public class EscapeMenu : MonoBehaviour
         FadeManager.Instance.FadeIn();
         StartCoroutine(GoToMainMenu());
     }
-    
+
     private IEnumerator GoToMainMenu()
     {
         yield return new WaitForSeconds(0.5f);
@@ -50,13 +57,7 @@ public class EscapeMenu : MonoBehaviour
 
     private void OnResumeButtonClicked(Unit obj)
     {
-        transform.localScale = Vector3.zero;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        ToggleEscapeMenu();
+        CloseEscapeMenu();
     }
 
     private void ToggleEscapeMenu()
@@ -64,13 +65,23 @@ public class EscapeMenu : MonoBehaviour
         if (escapeAction.action.triggered)
         {
             if (transform.localScale == Vector3.one * 2)
-                transform.localScale = Vector3.zero;
+                CloseEscapeMenu();
             else
-            {
-                transform.localScale = Vector3.one * 2;
-                EventSystem.current.SetSelectedGameObject(settingsButton.gameObject);
-            }
-                
+                OpenEscapeMenu();
         }
+    }
+
+    private void CloseEscapeMenu()
+    {
+        transform.localScale = Vector3.zero;
+        if (_lastSelectedGameObject != null)
+            EventSystem.current.SetSelectedGameObject(_lastSelectedGameObject);
+    }
+
+    private void OpenEscapeMenu()
+    {
+        transform.localScale = Vector3.one * 2;
+        _lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
+        EventSystem.current.SetSelectedGameObject(settingsButton.gameObject);
     }
 }
