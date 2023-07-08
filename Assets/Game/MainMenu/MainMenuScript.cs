@@ -3,6 +3,7 @@ using SharpUI.Source.Common.UI.Elements.Button;
 using SharpUI.Source.Common.Util.Extensions;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace Game
@@ -12,10 +13,10 @@ namespace Game
         [SerializeField] private RectButton playButton;
         [SerializeField] private RectButton toMetaProgressionButton;
         [SerializeField] private RectButton toMainMenuButton;
+        [SerializeField] private RectButton notImplementedButton;
 
         [SerializeField] private GameObject mainMenuPanel;
         [SerializeField] private GameObject metaProgressionPanel;
-        [SerializeField] private GameObject fadeCircle;
         private int _currentPanelOffset;
 
         private int _wantedPanelOffset;
@@ -27,6 +28,8 @@ namespace Game
             toMetaProgressionButton.GetEventListener().ObserveOnClicked()
                 .SubscribeWith(this, OnToMetaProgressionButtonClicked);
             toMainMenuButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnToMainMenuButtonClicked);
+            notImplementedButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnToMainMenuButtonClicked);
+            EventSystem.current.SetSelectedGameObject(playButton.gameObject);
         }
 
         private void Update()
@@ -44,16 +47,18 @@ namespace Game
         private void OnToMainMenuButtonClicked(Unit obj)
         {
             _wantedPanelOffset = 0;
+            EventSystem.current.SetSelectedGameObject(toMetaProgressionButton.gameObject);
         }
 
         private void OnToMetaProgressionButtonClicked(Unit obj)
         {
             _wantedPanelOffset = -1920;
+            EventSystem.current.SetSelectedGameObject(toMainMenuButton.gameObject);
         }
 
         private void OnPlayButtonClicked(Unit obj)
         {
-            fadeCircle.GetComponent<FadeManager>().FadeIn();
+            FadeManager.Instance.FadeIn();
             StartCoroutine(GoToGameScene());
         }
 

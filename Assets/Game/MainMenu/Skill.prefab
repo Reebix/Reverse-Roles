@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AddButton
       objectReference: {fileID: 0}
+    - target: {fileID: 7224983615695812697, guid: 7a7207825d33c4b4aa8c774285d0c5e6,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -684,6 +689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RemoveButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224983615695812697, guid: 7a7207825d33c4b4aa8c774285d0c5e6,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

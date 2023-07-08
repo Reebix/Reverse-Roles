@@ -7,10 +7,12 @@ namespace Game
     public class FadeManager : MonoBehaviour
     {
         public int fadeDirection = -1;
+        public static FadeManager Instance;
 
 
         private void Awake()
         {
+            Instance = this;
             gameObject.SetActive(true);
         }
 
