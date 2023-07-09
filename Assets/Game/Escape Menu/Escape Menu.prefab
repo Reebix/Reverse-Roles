@@ -634,6 +634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escapeAction: {fileID: -2058515875194338004, guid: cdedc543083c2c845bc6375c97f41469,
     type: 3}
+  placeUnitAction: {fileID: -870217232048992627, guid: cdedc543083c2c845bc6375c97f41469,
+    type: 3}
   resumeButton: {fileID: 6465800201485441223}
   quitButton: {fileID: 3838864584464419375}
   mainMenuButton: {fileID: 1984627175913014889}

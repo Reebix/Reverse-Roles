@@ -14,7 +14,7 @@ namespace Game.Escape_Menu
         public InputActionReference escapeAction, placeUnitAction;
         public RectButton resumeButton, quitButton, mainMenuButton, settingsButton;
         public GameObject infoPrefab;
-        
+
 
         private GameObject _lastSelectedGameObject;
 
@@ -46,7 +46,7 @@ namespace Game.Escape_Menu
             StartCoroutine(GoToMainMenu());
         }
 
-        private IEnumerator GoToMainMenu()
+        public static IEnumerator GoToMainMenu()
         {
             yield return new WaitForSeconds(0.5f);
             SceneManager.LoadScene("Game/MainMenu/MainMenu");

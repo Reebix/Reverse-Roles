@@ -48,7 +48,7 @@ Shader "Custom/SpriteColor"
             
             fixed4 frag (v2f i) : SV_Target
             {
-                _WhiteFactor += _RemoveFactor *2;
+                    _WhiteFactor += _RemoveFactor *2;
                 _WhiteFactor = clamp(_WhiteFactor, 0, 1);
                 if(_RemoveFactor >= 0.5)
                 {
@@ -56,9 +56,14 @@ Shader "Custom/SpriteColor"
                 }
                 
                 fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+              if (all(col == fixed4(1, 1, 1, 1))) {
+                  return _Color;
+                }
+                
                 col.rgb *= col.a;
                 col.rgb = lerp(col.rgb, 1, _WhiteFactor);
                 col.a *=1- smoothstep(1-_DissolveFactor, 1-_DissolveFactor + 0.05, i.uv.y);
+             
                 return col;
             }
             

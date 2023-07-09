@@ -1,5 +1,7 @@
+using Game.InGame.Door;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -17,10 +19,14 @@ namespace Game
         private bool _isDifficultySliderNotNull;
         private TextMeshProUGUI _textMeshProUGUI;
 
+        public static GameMaster Instance { get; private set; }
+
 
         // Start is called before the first frame update
         private void Start()
         {
+            Instance = this;
+            _timer = 310f;
             if (timerText != null)
                 _textMeshProUGUI = timerText.GetComponent<TextMeshProUGUI>();
 
@@ -56,12 +62,21 @@ namespace Game
 
         public static void GameOver()
         {
-            Debug.Log("Game Over :) ended on difficulty " + Difficulty + " time left: " + FormatTime(_timer));
+            var door = DoorScript.Instance;
+            door.endText.text = "Game Over :)\nended on difficulty: " + Difficulty + "\ntime left: " +
+                                FormatTime(_timer);
+            EventSystem.current.SetSelectedGameObject(door.toMainMenuButton.gameObject);
+            door.finishPanel.SetActive(true);
+            Instance.CancelInvoke("CountDownTimer");
         }
 
         public static void GameWon()
         {
-            Debug.Log("Game Won :( managed to defeat on difficulty: " + Difficulty);
+            var door = DoorScript.Instance;
+            door.endText.text = "Game Won :(\nmanaged to defeat on\ndifficulty: " + Difficulty;
+            EventSystem.current.SetSelectedGameObject(door.toMainMenuButton.gameObject);
+            door.finishPanel.SetActive(true);
+            Instance.CancelInvoke("CountDownTimer");
         }
     }
 }

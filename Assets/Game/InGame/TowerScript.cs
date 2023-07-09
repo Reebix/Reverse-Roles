@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
+    private static readonly int RemoveFactor = Shader.PropertyToID("_RemoveFactor");
     public int id;
     public float range = 5f;
 
     public bool canShoot = true;
 
     private SpriteRenderer _spriteRenderer;
-    private static readonly int RemoveFactor = Shader.PropertyToID("_RemoveFactor");
 
     // Start is called before the first frame update
     private void Start()
@@ -35,15 +35,18 @@ public class TowerScript : MonoBehaviour
         if (closestUnit != null)
         {
             canShoot = false;
-            StartCoroutine(closestUnit.Remove());
-            StartCoroutine(Remove());
+            if (closestUnit.id != id)
+            {
+                StartCoroutine(closestUnit.Remove());
+                StartCoroutine(Remove());
+            }
         }
     }
 
     private UnitScript GetClosestFromList(List<UnitScript> units)
     {
         UnitScript closestUnit = null;
-        float closestDistance = float.MaxValue;
+        var closestDistance = float.MaxValue;
         foreach (var unit in units)
         {
             var distance = Vector3.Distance(transform.position, unit.transform.position);
@@ -56,7 +59,7 @@ public class TowerScript : MonoBehaviour
 
         return closestUnit;
     }
-    
+
     public IEnumerator UpdateVisuals()
     {
         _spriteRenderer.sprite = TowerManager.Instance.towerSprites[id];
@@ -67,6 +70,7 @@ public class TowerScript : MonoBehaviour
             _spriteRenderer.material.SetFloat(RemoveFactor, removeTime);
             yield return new WaitForSeconds(0.01f);
         }
+
         canShoot = true;
         yield return null;
     }
@@ -81,7 +85,7 @@ public class TowerScript : MonoBehaviour
             StartCoroutine(UpdateVisuals());
         }
     }
-    
+
     public IEnumerator Remove()
     {
         float removeTime = 0;
@@ -91,6 +95,7 @@ public class TowerScript : MonoBehaviour
             _spriteRenderer.material.SetFloat(RemoveFactor, removeTime);
             yield return new WaitForSeconds(0.01f);
         }
+
         yield return null;
     }
 }

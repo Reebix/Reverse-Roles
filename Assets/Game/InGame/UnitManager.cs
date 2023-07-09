@@ -13,14 +13,15 @@ namespace Game.InGame
         public static UnitManager Instance;
         public GameObject unitPrefab;
         public InputActionReference spawnUnitButton;
-        private int _energy = 12;
         public Image energyBar;
         public int currentUnitId = -1;
         public List<UnitButtonScript> unitButtons = new(5);
         public List<Sprite> unitSprites = new(5);
         public List<UnitScript> units;
+        private int _energy = 12;
 
-        private List<GameObject> _unitButtonsObjects = new(5);
+        private readonly List<GameObject> _unitButtonsObjects = new(5);
+
         private void Awake()
         {
             Instance = this;
@@ -39,11 +40,8 @@ namespace Game.InGame
         // Update is called once per frame
         private void Update()
         {
-
             if (EventSystem.current.currentSelectedGameObject == null)
-            {
                 EventSystem.current.SetSelectedGameObject(_unitButtonsObjects[currentUnitId]);
-            }
         }
 
         private void SpawnUnit()
@@ -66,7 +64,7 @@ namespace Game.InGame
         {
             while (gameObject.activeSelf)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
                 AddEnergy(1);
             }
         }
