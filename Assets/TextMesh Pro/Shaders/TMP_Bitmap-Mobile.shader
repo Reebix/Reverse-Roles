@@ -64,7 +64,7 @@ SubShader {
 		};
 
 		struct v2f {
-			float4 vertex		: POSITION;
+			float4 pos		: POSITION;
 			fixed4 color		: COLOR;
 			float2 texcoord0	: TEXCOORD0;
 			float4 mask			: TEXCOORD2;
@@ -89,13 +89,13 @@ SubShader {
 
 			vert.xy += (vert.w * 0.5) / _ScreenParams.xy;
 
-			OUT.vertex = UnityPixelSnap(UnityObjectToClipPos(vert));
+			OUT.pos = UnityPixelSnap(UnityObjectToClipPos(vert));
 			OUT.color = v.color;
 			OUT.color *= _Color;
 			OUT.color.rgb *= _DiffusePower;
 			OUT.texcoord0 = v.texcoord0;
 
-			float2 pixelSize = OUT.vertex.w;
+			float2 pixelSize = OUT.pos.w;
 			//pixelSize /= abs(float2(_ScreenParams.x * UNITY_MATRIX_P[0][0], _ScreenParams.y * UNITY_MATRIX_P[1][1]));
 
 			// Clamp _ClipRect to 16bit.

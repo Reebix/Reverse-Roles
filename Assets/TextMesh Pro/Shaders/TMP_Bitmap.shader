@@ -63,7 +63,7 @@ SubShader{
 		};
 
 		struct v2f {
-			float4	vertex		: SV_POSITION;
+			float4	pos		: SV_POSITION;
 			fixed4	color		: COLOR;
 			float2	texcoord0	: TEXCOORD0;
 			float2	texcoord1	: TEXCOORD1;
@@ -104,7 +104,7 @@ SubShader{
 			faceColor *= _FaceColor;
 
 			v2f OUT;
-			OUT.vertex = vPosition;
+			OUT.pos = vPosition;
 			OUT.color = faceColor;
 			OUT.texcoord0 = v.texcoord0;
 			OUT.texcoord1 = TRANSFORM_TEX(UnpackUV(v.texcoord1), _FaceTex);

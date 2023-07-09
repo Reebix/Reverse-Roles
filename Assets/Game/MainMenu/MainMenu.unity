@@ -1894,6 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActionAsset: {fileID: 0}
+  timerText: {fileID: 0}
   difficulty: 1
   difficultySlider: {fileID: 924577094}
 --- !u!4 &1050289344
@@ -2455,7 +2456,7 @@ PrefabInstance:
     - target: {fileID: 727798838975282002, guid: c6e1c5901d6549e488a175f7a379d5db,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 727798838975282002, guid: c6e1c5901d6549e488a175f7a379d5db,
         type: 3}
@@ -4329,7 +4330,7 @@ PrefabInstance:
     - target: {fileID: 322130041786060587, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 348.562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 322130041786060587, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}
@@ -4489,7 +4490,7 @@ PrefabInstance:
     - target: {fileID: 4795644829637221868, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 657.124
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4795644829637221868, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}
@@ -4499,7 +4500,7 @@ PrefabInstance:
     - target: {fileID: 4795644829637221868, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 348.562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4795644829637221868, guid: c12c84a56ec41ad43a854be7ecf28731,
         type: 3}

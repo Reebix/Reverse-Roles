@@ -8,6 +8,8 @@ namespace Game.InGame.Door
     public class DoorScript : MonoBehaviour
     {
         public static DoorScript Instance;
+        private static readonly int DissolveFactor = Shader.PropertyToID("_DissolveFactor");
+        private static readonly int WhiteFactor = Shader.PropertyToID("_WhiteFactor");
         public Image FillImage;
         public GameObject Text;
         public List<Sprite> sprites;
@@ -15,11 +17,13 @@ namespace Game.InGame.Door
         public int health = 10;
 
         public int state;
+        private SpriteRenderer _spriteRenderer;
 
 
         // Start is called before the first frame update
         private void Start()
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             Instance = this;
             health = maxHealth;
             Damage(0);
@@ -38,24 +42,28 @@ namespace Game.InGame.Door
         public void ChangeState(int newState)
         {
             state = newState;
-            if (state > 1) gameObject.SetActive(false);
-            else GetComponent<SpriteRenderer>().sprite = sprites[state];
+            if (state > 1)
+            {
+                GameMaster.GameOver();
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                _spriteRenderer.sprite = sprites[state];
+            }
         }
 
         public void Damage(int amount)
         {
             health -= amount;
+            _spriteRenderer.material.SetFloat(DissolveFactor, 1 - health / (float)maxHealth);
             FillImage.fillAmount = (float)health / maxHealth;
-            Text.GetComponent<TextMeshProUGUI>().text = health < 0 ? "0" : health + " / " + maxHealth;
-            if (health <= 0)
-            {
-                health = 0;
+            Text.GetComponent<TextMeshProUGUI>().text = health + " / " + maxHealth;
+            if (health == 0)
+
                 ChangeState(2);
-            }
-            else if (health <= maxHealth / 2)
-            {
-                ChangeState(1);
-            }
+
+            else if (health <= maxHealth / 2) ChangeState(1);
         }
     }
 }

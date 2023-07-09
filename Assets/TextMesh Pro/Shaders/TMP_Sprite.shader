@@ -69,7 +69,7 @@ Shader "TextMeshPro/Sprite"
 
 			struct v2f
 			{
-				float4 vertex   : SV_POSITION;
+				float4 pos   : SV_POSITION;
 				fixed4 color    : COLOR;
                 float2 texcoord  : TEXCOORD0;
 				float4 worldPosition : TEXCOORD1;
@@ -88,7 +88,7 @@ Shader "TextMeshPro/Sprite"
                 UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
                 OUT.worldPosition = v.vertex;
-				OUT.vertex = UnityObjectToClipPos(OUT.worldPosition);
+				OUT.pos = UnityObjectToClipPos(OUT.worldPosition);
 
                 OUT.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 				

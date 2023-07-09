@@ -11,9 +11,10 @@ namespace Game.Escape_Menu
 {
     public class EscapeMenu : MonoBehaviour
     {
-        public InputActionReference escapeAction;
+        public InputActionReference escapeAction, placeUnitAction;
         public RectButton resumeButton, quitButton, mainMenuButton, settingsButton;
         public GameObject infoPrefab;
+        
 
         private GameObject _lastSelectedGameObject;
 
@@ -77,6 +78,7 @@ namespace Game.Escape_Menu
             transform.localScale = Vector3.zero;
             if (_lastSelectedGameObject != null)
                 EventSystem.current.SetSelectedGameObject(_lastSelectedGameObject);
+            placeUnitAction.action.Enable();
         }
 
         private void OpenEscapeMenu()
@@ -84,6 +86,7 @@ namespace Game.Escape_Menu
             transform.localScale = Vector3.one * 2;
             _lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
             EventSystem.current.SetSelectedGameObject(settingsButton.gameObject);
+            placeUnitAction.action.Disable();
         }
     }
 }
