@@ -35,11 +35,8 @@ public class TowerScript : MonoBehaviour
         if (closestUnit != null)
         {
             canShoot = false;
-            if (closestUnit.id != id)
-            {
-                StartCoroutine(closestUnit.Remove());
+            StartCoroutine(closestUnit.Remove());
                 StartCoroutine(Remove());
-            }
         }
     }
 
@@ -70,7 +67,7 @@ public class TowerScript : MonoBehaviour
             _spriteRenderer.material.SetFloat(RemoveFactor, removeTime);
             yield return new WaitForSeconds(0.01f);
         }
-
+        yield return new WaitForSeconds(0.5f);
         canShoot = true;
         yield return null;
     }

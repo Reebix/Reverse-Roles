@@ -12,7 +12,7 @@ namespace Game.Escape_Menu
     public class EscapeMenu : MonoBehaviour
     {
         public InputActionReference escapeAction, placeUnitAction;
-        public RectButton resumeButton, quitButton, mainMenuButton, settingsButton;
+        public RectButton resumeButton, quitButton, settingsButton;
         public GameObject infoPrefab;
 
 
@@ -24,7 +24,6 @@ namespace Game.Escape_Menu
             escapeAction.action.Enable();
             resumeButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnResumeButtonClicked);
             quitButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnQuitButtonClicked);
-            mainMenuButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnMainMenuButtonClicked);
             settingsButton.GetEventListener().ObserveOnClicked().SubscribeWith(this, OnSettingsButtonClicked);
         }
 

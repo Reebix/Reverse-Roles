@@ -22,6 +22,7 @@ namespace Game.InGame
             var spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = UnitManager.Instance.unitSprites[id];
             UnitManager.Instance.units.Add(this);
+            _spriteRenderer.material.SetFloat(RemoveFactor, 0);
         }
 
         // Update is called once per frame

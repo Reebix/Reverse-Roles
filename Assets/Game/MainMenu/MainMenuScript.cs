@@ -65,13 +65,13 @@ namespace Game.MainMenu
             var startTime = Time.time;
             var journeyLength = Vector3.Distance(wormPos, targetPos);
 
-            while (Time.time < startTime + 4f)
+            while (Time.time < startTime + 2f)
             {
                 var distanceCovered = (Time.time - startTime) * speed;
                 var fractionOfJourney = distanceCovered / journeyLength;
                 worm.transform.position = Vector3.Lerp(wormPos, targetPos, fractionOfJourney);
 
-                if (Time.time < startTime + 2f)
+                if (Time.time < startTime + 1.5f)
                 {
                     tower.material.SetFloat(RemoveFactor, Mathf.Lerp(0f, 1f, (fractionOfJourney - 0.5f) * 2));
                     worm.material.SetFloat(RemoveFactor, Mathf.Lerp(0f, 1f, (fractionOfJourney - 0.5f) * 2));

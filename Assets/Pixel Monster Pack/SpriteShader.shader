@@ -56,9 +56,7 @@ Shader "Custom/SpriteColor"
                 }
                 
                 fixed4 col = tex2D(_MainTex, i.uv) * _Color;
-              if (all(col == fixed4(1, 1, 1, 1))) {
-                  return _Color;
-                }
+              
                 
                 col.rgb *= col.a;
                 col.rgb = lerp(col.rgb, 1, _WhiteFactor);
